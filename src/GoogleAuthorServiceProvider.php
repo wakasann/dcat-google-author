@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleAuthor;
+namespace Wakazunn\GoogleAuthor;
 
 use Dcat\Admin\Extend\ServiceProvider;
 use Dcat\Admin\Admin;

@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleAuthor\Http\Controllers;
+namespace Wakazunn\GoogleAuthor\Http\Controllers;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Models\Administrator;

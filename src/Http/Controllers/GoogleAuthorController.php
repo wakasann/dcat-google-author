@@ -1,6 +1,6 @@
 <?php
 
-namespace GoogleAuthor\Http\Controllers;
+namespace Wakazunn\GoogleAuthor\Http\Controllers;
 
 use Dcat\Admin\Admin;
 use Dcat\Admin\Layout\Content;
@@ -9,7 +9,7 @@ use Illuminate\Routing\Controller;
 
 use Dcat\Admin\Http\Controllers\AuthController as BaseAuthController;
 use Dcat\Admin\Models\Administrator;
-use GoogleAuthor\GoogleAuthorServiceProvider;
+use Wakazunn\GoogleAuthor\GoogleAuthorServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 

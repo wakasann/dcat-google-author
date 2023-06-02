@@ -1,6 +1,6 @@
 <?php
 
-use GoogleAuthor\Http\Controllers;
+use Wakazunn\GoogleAuthor\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 
 Route::get('google-author', Controllers\GoogleAuthorController::class.'@index');

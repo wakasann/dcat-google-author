@@ -19,14 +19,14 @@
     },
     "autoload": {
         "psr-4": {
-            "GoogleAuthor\\": "src/"
+            "Wakazunn\\GoogleAuthor\\": "src/"
         }
     },
     "extra": {
-        "dcat-admin": "GoogleAuthor\\GoogleAuthorServiceProvider",
+        "dcat-admin": "Wakazunn\\GoogleAuthor\\GoogleAuthorServiceProvider",
         "laravel": {
             "providers": [
-                "GoogleAuthor\\GoogleAuthorServiceProvider"
+                "Wakazunn\\GoogleAuthor\\GoogleAuthorServiceProvider"
             ]
         }
     }
