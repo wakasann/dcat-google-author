@@ -1,0 +1,33 @@
+{
+    "name": "登录页面谷歌验证码",
+    "alias": "",
+    "description": "绑定Google验证码和登录验证",
+    "type": "library",
+    "keywords": ["dcat-admin", "extension"],
+    "homepage": "https://github.com/waka/googleAuthor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wakazunn",
+            "email": "wakazunn@sohu.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0",
+        "dcat/laravel-admin": "~2.0",
+        "phpgangsta/googleauthenticator": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "GoogleAuthor\\": "src/"
+        }
+    },
+    "extra": {
+        "dcat-admin": "GoogleAuthor\\GoogleAuthorServiceProvider",
+        "laravel": {
+            "providers": [
+                "GoogleAuthor\\GoogleAuthorServiceProvider"
+            ]
+        }
+    }
+}
