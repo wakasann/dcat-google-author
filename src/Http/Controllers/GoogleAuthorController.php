@@ -36,7 +36,7 @@ class GoogleAuthorController extends BaseAuthController
         $googlecodeLabel = GoogleAuthorServiceProvider::trans('login.googlecode');
         $googlecodePlaceholder = GoogleAuthorServiceProvider::trans('login.googlecode_placeholder');
         
-        return $content->full()->body( Admin::view('waka.googleAuthor::login',[
+        return $content->full()->body( Admin::view('wakazunn.googleAuthor::login',[
             'google_code_label' => $googlecodeLabel,
             'google_code_placeholder' => $googlecodePlaceholder
         ]));
