@@ -1,5 +1,5 @@
 {
-    "name": "Wakazunn/googleAuthor",
+    "name": "wakazunn/google-author",
     "alias": "",
     "description": "绑定Google验证码和登录验证",
     "type": "library",
