@@ -1,5 +1,5 @@
 {
-    "name": "登录页面谷歌验证码",
+    "name": "waka/googleAuthor",
     "alias": "",
     "description": "绑定Google验证码和登录验证",
     "type": "library",
