@@ -5,7 +5,7 @@ namespace Wakazunn\GoogleAuthor\Http\Controllers;
 use Dcat\Admin\Admin;
 use Dcat\Admin\Models\Administrator;
 use Dcat\Admin\Widgets\Form;
-use GoogleAuthor\GoogleAuthorServiceProvider;
+use Wakazunn\GoogleAuthor\GoogleAuthorServiceProvider;
 
 class GoogleAuthForm extends Form
 {
