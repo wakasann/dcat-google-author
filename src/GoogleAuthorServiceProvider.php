@@ -38,10 +38,19 @@ class GoogleAuthorServiceProvider extends ServiceProvider
 	{
 		//
 	}
-
-
     
+     public function register_routes(){
+        $attributes = [
+            'prefix'     => config('admin.route.prefix'),
+            'middleware' => config('admin.route.middleware'),
+        ];
 
+        app('router')->group($attributes, function ($router) {
+            /* @var \Illuminate\Routing\Router $router */
+            $router->get('wakazunn-gauthenticator', 'Wakazunn\GoogleAuthor\Http\Controllers\GoogleAuthorController@index');
+        });
+    }
+    
 	public function init()
 	{
 		parent::init();
@@ -107,18 +116,6 @@ class GoogleAuthorServiceProvider extends ServiceProvider
         });
 		
 	}
-
-    public function register_routes(){
-        $attributes = [
-            'prefix'     => config('admin.route.prefix')
-        ];
-
-        app('router')->group($attributes, function ($router) {
-            /* @var \Illuminate\Routing\Router $router */
-            $router->get('wakazunn-gauthenticator', 'Wakazunn\GoogleAuthor\Http\Controllers\GoogleAuthorController@index');
-        });
-    }
-    }
 
 	public function settingForm()
 	{
