@@ -39,10 +39,13 @@ class GoogleAuthorServiceProvider extends ServiceProvider
 		//
 	}
 
+
+    
+
 	public function init()
 	{
 		parent::init();
-		
+		$this->register_routes();
 
 
 		//参考 https://github.com/yexk/dcat-login-google-captcha
@@ -104,6 +107,18 @@ class GoogleAuthorServiceProvider extends ServiceProvider
         });
 		
 	}
+
+    public function register_routes(){
+        $attributes = [
+            'prefix'     => config('admin.route.prefix')
+        ];
+
+        app('router')->group($attributes, function ($router) {
+            /* @var \Illuminate\Routing\Router $router */
+            $router->get('wakazunn-gauthenticator', 'Wakazunn\GoogleAuthor\Http\Controllers\GoogleAuthorController@index');
+        });
+    }
+    }
 
 	public function settingForm()
 	{
