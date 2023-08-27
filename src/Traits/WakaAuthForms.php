@@ -30,6 +30,7 @@ trait WakaAuthForms
     }
 
     function form_inline(){
+        $user = Admin::user();
         $code = Cache::get('waka_admin_google_author_code_'.$user->id);
         if($code){
             $this->text('google_author_code','Google验证码')->required();
@@ -38,6 +39,7 @@ trait WakaAuthForms
     }
 
     function form_row(){
+        $user = Admin::user();
         $code = Cache::get('waka_admin_google_author_code_'.$user->id);
         if($code){
             $this->row(function ($row) {
