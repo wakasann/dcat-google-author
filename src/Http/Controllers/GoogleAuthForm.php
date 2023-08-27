@@ -43,6 +43,11 @@ class GoogleAuthForm extends Form
             ]);
             Cache::forever('waka_admin_google_author_code_'.$user->id, $googleAuth);
         }else if($clear == 1){
+            if($googleAuth != $user->google_auth){
+                $this
+				->response()
+				->error('操作不正确');
+            }
             $unbindCode = isset($input['google_auth_code'])?$input['google_auth_code']:'';
             if(empty($unbindCode)){
                 $this
@@ -83,8 +88,9 @@ class GoogleAuthForm extends Form
           // 创建谷歌验证码
         if(!empty($user->google_auth)){
             // $this->text('google_auth')->default($user->google_auth)->readOnly(true);
-            $this->text('google_auth_code','验证码')->require();
+            $this->text('google_auth_code','验证码')->required();
             $this->hidden('clear')->value(1);
+            $this->hidden('google_auth')->value($user->google_auth);
             $this->confirm('确认提示','解绑当前Google验证码吗?');
         }else{
             
@@ -93,7 +99,7 @@ class GoogleAuthForm extends Form
             $this->text('google_auth')->value($secret)->readOnly(true);
             $qrCodeUrl = $ga->getQRCodeGoogleUrl(urlencode(GoogleAuthorServiceProvider::setting('show_name')), $secret);
             $this->html("<img src='{$qrCodeUrl}'/>");
-            $this->text('onecode','验证码')->require();
+            $this->text('onecode','验证码')->required();
             $this->hidden('clear')->value(0);
         }
     }
