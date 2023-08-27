@@ -108,7 +108,7 @@ class GoogleAuthorServiceProvider extends ServiceProvider
 							'google_author_code' => static::trans('login.google_code_error'),
 						]);
 					}
-                    Cache::put('waka_admin_google_author_code_'.$user->id,$user->google_auth);
+                    Cache::forever('waka_admin_google_author_code_'.$user->id,$user->google_auth);
 				}
             }
 

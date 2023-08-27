@@ -30,13 +30,21 @@ trait WakaAuthForms
     }
 
     function form_inline(){
-        $this->text('google_author_code','Google验证码')->required();
+        $code = Cache::get('waka_admin_google_author_code_'.$user->id);
+        if($code){
+            $this->text('google_author_code','Google验证码')->required();
+        }
+       
     }
 
     function form_row(){
-        $this->row(function ($row) {
-            $row->text('google_author_code','Google验证码')->required();
-
-        });
+        $code = Cache::get('waka_admin_google_author_code_'.$user->id);
+        if($code){
+            $this->row(function ($row) {
+                $row->text('google_author_code','Google验证码')->required();
+    
+            });
+        }
+        
     }
 }

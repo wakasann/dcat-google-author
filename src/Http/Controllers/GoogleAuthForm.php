@@ -41,7 +41,20 @@ class GoogleAuthForm extends Form
             Administrator::where('id',$user->id)->update([
                 'google_auth' => $googleAuth
             ]);
-            Cache::put('waka_admin_google_author_code_'.$user->id, $googleAuth);
+            Cache::forever('waka_admin_google_author_code_'.$user->id, $googleAuth);
+        }else if($clear == 1){
+            $unbindCode = isset($input['google_auth_code'])?$input['google_auth_code']:'';
+            if(empty($unbindCode)){
+                $this
+				->response()
+				->error('请输入6位 Google验证码');
+            }
+            $googleAuth = $user->google_auth;
+            $ga = new \PHPGangsta_GoogleAuthenticator();
+            $checkResult = $ga->verifyCode($googleAuth, $unbindCode, 2);    // 2 = 2*30sec clock tolerance
+            if(!$checkResult){
+                return $this->response()->error('Google 验证码解绑失败');
+            }
         }
 
         if($clear == 1){
@@ -69,7 +82,8 @@ class GoogleAuthForm extends Form
         $this->display('id','后台用户')->value($user->name);
           // 创建谷歌验证码
         if(!empty($user->google_auth)){
-            $this->text('google_auth')->default($user->google_auth)->readOnly(true);
+            // $this->text('google_auth')->default($user->google_auth)->readOnly(true);
+            $this->text('google_auth_code','验证码')->require();
             $this->hidden('clear')->value(1);
             $this->confirm('确认提示','解绑当前Google验证码吗?');
         }else{
@@ -79,7 +93,7 @@ class GoogleAuthForm extends Form
             $this->text('google_auth')->value($secret)->readOnly(true);
             $qrCodeUrl = $ga->getQRCodeGoogleUrl(urlencode(GoogleAuthorServiceProvider::setting('show_name')), $secret);
             $this->html("<img src='{$qrCodeUrl}'/>");
-            $this->text('onecode','验证码');
+            $this->text('onecode','验证码')->require();
             $this->hidden('clear')->value(0);
         }
     }
