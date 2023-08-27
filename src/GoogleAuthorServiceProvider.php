@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Lang;
 use Wakazunn\GoogleAuthor\Http\Controllers\GoogleAuthForm;
-
+use Illuminate\Support\Facades\Cache;
 class GoogleAuthorServiceProvider extends ServiceProvider
 {
 	use HasFormResponse;
@@ -108,6 +108,7 @@ class GoogleAuthorServiceProvider extends ServiceProvider
 							'google_author_code' => static::trans('login.google_code_error'),
 						]);
 					}
+                    Cache::put('waka_admin_google_author_code_'.$user->id,$user->google_auth);
 				}
             }
 

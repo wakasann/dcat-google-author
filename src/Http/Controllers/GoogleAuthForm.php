@@ -41,12 +41,14 @@ class GoogleAuthForm extends Form
             Administrator::where('id',$user->id)->update([
                 'google_auth' => $googleAuth
             ]);
+            Cache::put('waka_admin_google_author_code_'.$user->id, $googleAuth);
         }
 
         if($clear == 1){
             Administrator::where('id',$user->id)->update([
                 'google_auth' => NULL
             ]);
+            Cache::forget('waka_admin_google_author_code_'.$user->id);
         }
         if($clear == 1){
             return $this->response()->success('解绑成功')->refresh();
