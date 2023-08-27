@@ -16,15 +16,16 @@ trait WakaAuthForms
         if($code){
             $captcha = $input['google_author_code'];
             if(empty($captcha) || strlen($captcha) > 6){
-                return $this->response()->error('Google验证码错误，请重试');
+                return 'Google验证码错误，请重试';
             }
             $user = Admin::user();
             $ga = new \PHPGangsta_GoogleAuthenticator();
             $result =  $ga->verifyCode($code, $captcha);
             if(!$result){
-                return $this->response()->error('Google验证码错误，请重试');
+                return 'Google验证码错误，请重试';
             }
         }
+        return true;
         
 
     }
