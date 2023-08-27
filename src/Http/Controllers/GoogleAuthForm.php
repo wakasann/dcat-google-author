@@ -6,7 +6,7 @@ use Dcat\Admin\Admin;
 use Dcat\Admin\Models\Administrator;
 use Dcat\Admin\Widgets\Form;
 use Wakazunn\GoogleAuthor\GoogleAuthorServiceProvider;
-
+use Illuminate\Support\Facades\Cache;
 class GoogleAuthForm extends Form
 {
     /**
